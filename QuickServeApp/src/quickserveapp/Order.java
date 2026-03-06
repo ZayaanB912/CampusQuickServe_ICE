@@ -67,4 +67,34 @@ public class Order {
         return SubtotalAfterDiscount + VAT;
     }
     
+    // Method to generate receipt
+    public String generateReceipt(String name, String studentNumber, String food, int quantity) {
+
+        int price = getPrice();
+        double subtotal = calculateSubtotal(quantity);
+        double discount = calculateDiscount(subtotal, quantity);
+        double subtotalafterdiscount = calculateSubtotalAfterDiscount(discount, subtotal);
+        double vat = calculateVAT(subtotalafterdiscount);
+        double total = calculateTotal(subtotalafterdiscount, vat);
+
+        //Outputting the receipt
+        String receipt =
+                "-----CAMPUS QUICKSERVE-----"
+                + "\nCustomer: " + name
+                + "\nStudent Number: " + studentNumber
+                + "\n\nItems Ordered: " + food
+                + "\nQuantity: " + quantity
+                + "\nPrice per item: R" + price 
+                + "\nSubtotal: R" + subtotal 
+                + "\nDiscount: R" + discount 
+                + "\nSubtotal after discount: R" + subtotalafterdiscount
+                + "\nVAT (15%): R" + vat
+                + "\nTotal: R" + total 
+                + "\n\nThank you for your order!" 
+                + "\n------------------------------------------------";
+
+        return receipt;
+        
+    }
+    
 }
