@@ -25,6 +25,25 @@ public class QuickServeApp {
         //User entering their student number
         String StudentNumber = JOptionPane.showInputDialog("Please enter your student number:", "Campus Quick Serve");
 
+        //Creating an 'order' object and calling the method
+        Order order = new Order();
+
+        //Creating a 'foodchoice' options and calling the method
+        String foodChoice = order.selectFood();
+        
+        //Automatically setting the quantity to 0
+        int quantity = 0;
+        //Creating a boolean to see if the user put numbers or not
+        boolean error = true;
+
+        while (error) {
+            try {
+                quantity = Integer.parseInt(JOptionPane.showInputDialog("How many would you like?", "Campus Quick Serve"));
+                error = false;
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Please enter a valid number.");
+            }
+        }
         
         
     }
