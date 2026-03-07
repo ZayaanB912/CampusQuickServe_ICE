@@ -46,8 +46,8 @@ public class QuickServeApp {
         }
         
         
-        //Calling the 'generateReceipt method and then using it to compile all the collected data
-        String receipt = order.generateReceipt(Name, StudentNumber, foodChoice, quantity);
+        //Creating object using 'FinalReceipt' method
+        String receipt = order.FinalReceipt(Name, StudentNumber, foodChoice, quantity);
 
         //Compiling the receipt using all the data that was put in
         JOptionPane.showMessageDialog(null, receipt);

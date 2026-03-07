@@ -38,8 +38,8 @@ public class Order {
         return prices[selectedIndex];
     }
     
-    //Method to get SubTotal before discount(if there is) for everything
-    public double calculateSubtotal(int quantity) {
+    //Method to get SubTotal before discount(if there is) for everything (BD - Before Discount)
+    public double calculateSubtotalBD(int quantity) {
         return prices[selectedIndex] * quantity;
     }
     
@@ -57,8 +57,8 @@ public class Order {
         return subtotal - discount;
     }
 
-    //Method to add the VAT(15%)
-    public double calculateVAT(double amount) {
+    //Method to add the VAT(15%)   (BT - Before Total)
+    public double calculateVATBT(double amount) {
         return amount * VAT_RATE;
     }
     
@@ -68,13 +68,13 @@ public class Order {
     }
     
     // Method to generate receipt
-    public String generateReceipt(String name, String studentNumber, String food, int quantity) {
+    public String FinalReceipt(String name, String studentNumber, String food, int quantity) {
 
         int price = getPrice();
-        double subtotal = calculateSubtotal(quantity);
+        double subtotal = calculateSubtotalBD(quantity);
         double discount = calculateDiscount(subtotal, quantity);
         double subtotalafterdiscount = calculateSubtotalAfterDiscount(discount, subtotal);
-        double vat = calculateVAT(subtotalafterdiscount);
+        double vat = calculateVATBT(subtotalafterdiscount);
         double total = calculateTotal(subtotalafterdiscount, vat);
 
         //Outputting the receipt
